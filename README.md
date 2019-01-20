@@ -1,3 +1,5 @@
+# Requirements
+
 # Docker+Bash test
 Requirements: sudo + curl
-Command: sudo ./startEnv.sh
+Command: sudo ./Docker+Bash/startEnv.sh
