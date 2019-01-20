@@ -1,0 +1,25 @@
+FROM centos
+
+MAINTAINER SpawW SomeChallenge "the.spaww@gmail.com"
+
+#Install and configure nginx
+RUN yum install -y epel-release
+RUN yum install -y nginx haproxy
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
+
+#FROM haproxy:1.6.4-alpine
+COPY ./haproxy.cfg /etc/haproxy/haproxy.cfg
+#/usr/local/etc/haproxy/haproxy.cfg
+
+
+COPY ./start.sh  /usr/local/bin/start.sh
+
+RUN chmod +x /usr/local/bin/start.sh
+
+CMD ["/usr/local/bin/start.sh"]
+
+#Start do Nginx
+#RUN nginx &
+#CMD ["nginx"]
+#CMD ["haproxy", "-f", "/etc/haproxy/haproxy.cfg", "-p", "/var/run/haproxy.pid"]
